@@ -159,7 +159,7 @@ func NewClient(f *http.Client) *Client {
 	conf := sdk.NewConfiguration()
 
 	conf.HTTPClient = f
-	conf.AddDefaultHeader("Authorization", "token azion3eb9618b72a0baafa95dda52ad80d8f64e7")
+	conf.AddDefaultHeader("Authorization", "token value")
 	conf.AddDefaultHeader("Accept", "application/json;version=3")
 	conf.Servers = sdk.ServerConfigurations{
 		{URL: url},
