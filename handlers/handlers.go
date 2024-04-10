@@ -51,7 +51,7 @@ func ListBuckets(w http.ResponseWriter, r *http.Request) {
 func (c *Client) ListBuckets() (*Response, error) {
 	ctx := context.Background()
 
-	fmt.Println("Listing....")
+	fmt.Println("Listing buckets....")
 
 	req := c.apiClient.StorageAPI.StorageApiBucketsList(ctx)
 	_, httpResp, err := req.Execute()
@@ -159,7 +159,7 @@ func NewClient(f *http.Client) *Client {
 	conf := sdk.NewConfiguration()
 
 	conf.HTTPClient = f
-	conf.AddDefaultHeader("Authorization", "token value")
+	conf.AddDefaultHeader("Authorization", "token <YOUR_API_TOKEN>") // https://www.azion.com/en/documentation/products/guides/personal-tokens/
 	conf.AddDefaultHeader("Accept", "application/json;version=3")
 	conf.Servers = sdk.ServerConfigurations{
 		{URL: url},
@@ -168,8 +168,4 @@ func NewClient(f *http.Client) *Client {
 	return &Client{
 		apiClient: *sdk.NewAPIClient(conf),
 	}
-}
-
-type RequestBucket struct {
-	sdk.BucketCreate
 }
